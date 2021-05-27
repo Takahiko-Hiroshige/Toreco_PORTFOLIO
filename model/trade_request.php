@@ -137,6 +137,8 @@ function get_trade_success_history($db, $user_id, $request_user_id){
       user_id = ?
     OR
       request_user_id = ?
+    ORDER BY
+      created DESC
     ';
   return fetch_all_query($db, $sql, array($user_id, $request_user_id));
 }

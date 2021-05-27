@@ -28,7 +28,7 @@ $item_id = get_get('item_id');
 $request_item_id = get_get('item_id');
 $detail = get_get('detail');
 $item = get_item($db, $item_id);
-
+//トレード済みかをチェック
 $trade_success_check = trade_success_check($db, $item_id, $request_item_id);
 
 include_once VIEW_PATH . 'item_detail_view.php';

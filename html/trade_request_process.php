@@ -38,6 +38,7 @@ if(get_get("detail") === "detail"){
   redirect_to(TRADE_REQUEST_URL);
 }
 
+//トレードリクエストに対して承認処理
 if(get_post("request_result") === "Approval"){
   if(approval_process($db, $request_id, $user_id, $user_name, $request_user_id, $request_user_name,
   $item_id, $item_name, $request_item_id, $trade_request_item_name) === TRUE){
@@ -47,6 +48,7 @@ if(get_post("request_result") === "Approval"){
   }
 }
 
+//トレードリクエストに対して拒否処理
 if(get_post("request_result") === "delete"){
   if(reject_trade_request($db, $request_id) === TRUE){
     set_message('トレードリクエストを拒否しました。');

@@ -45,6 +45,26 @@ function get_items($db){
   return fetch_all_query($db, $sql);
 }
 
+function get_search_items($db, $search_name){
+  $search = '%' . preg_replace('/(?=[!_%])/', '!', $search_name) . '%';
+  $sql = '
+    SELECT
+      item_id, 
+      user_id,
+      name,
+      image,
+      item_quality,
+      trade_item,
+      created
+    FROM
+      items
+    WHERE
+      name LIKE ?
+    ';
+
+  return fetch_all_query_search($db, $sql, array($search));
+}
+
 function get_listing_items($db, $user_id){
   $sql = '
     SELECT
@@ -64,6 +84,25 @@ function get_listing_items($db, $user_id){
     ';
 
   return fetch_all_query($db, $sql, array($user_id));
+}
+
+function get_all_listing_items($db){
+  $sql = '
+    SELECT
+      item_id, 
+      user_id,
+      name,
+      image,
+      item_quality,
+      trade_item,
+      created
+    FROM
+      items
+    ORDER BY
+      created DESC
+    ';
+
+  return fetch_all_query($db, $sql);
 }
 
 function get_trade_items_check($db, $item_id, $trade_item_id){
@@ -125,14 +164,6 @@ function item_trade_request($db, $user_id, $request_user_id, $item_id, $request_
     VALUES(?, ?, ?, ?);
   ";
   return execute_query($db, $sql, array($user_id, $request_user_id, $item_id, $request_item_id));
-}
-
-function get_all_items($db){
-  return get_items($db);
-}
-
-function get_open_items($db){
-  return get_items($db, true);
 }
 
 function regist_item($db, $name, $image, $item_quality, $trade_item_name, $user_id){

@@ -25,6 +25,10 @@
           <a class="nav-link active" href="<?php print(LOGOUT_URL);?>">ログアウト</a>
         </li>
       </ul>
+      <form class="d-flex" action="index.php" method="post">
+        <input class="form-control me-2" type="search" name="search" id="search" placeholder="アイテム検索" aria-label="Search">
+        <button class="btn btn-outline-light" type="submit">検索</button>
+      </form>
     </div>
   </nav>
   <p>ようこそ、<?php print h($user['name']); ?>さん。</p>

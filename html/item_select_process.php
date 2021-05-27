@@ -28,10 +28,13 @@ $user_id = $_GET["user_id"];
 $request_user_id = $user["user_id"];
 $item_id = $_GET["item_id"];
 $trade_item_id = $_GET["trade_item_id"];
+
+//トレードリクエスト送信済みか否かチェック
 if(get_trade_items_check($db, $item_id, $trade_item_id) !== FALSE){
     set_error('すでにリクエスト送信済みです。');
     $item = get_item($db, $item_id);
     $trade_request_item = get_item($db, $trade_item_id);
+//リクエスト未送信の場合は、トレードリクエスト送信
 } else if(item_trade_request($db, $user_id, $request_user_id, $item_id, $trade_item_id)){
     set_message('トレードリクエスト送信しました。');
     $item = get_item($db, $item_id);
@@ -40,4 +43,5 @@ if(get_trade_items_check($db, $item_id, $trade_item_id) !== FALSE){
     set_error('トレードリクエスト送信に失敗しました。');
     redirect_to(ITEM_SELECT_URL);
 }
+
 include_once VIEW_PATH . 'trade_item_view.php';

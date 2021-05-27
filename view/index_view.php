@@ -11,7 +11,7 @@
   
 
   <div class="container">
-    <h1>商品一覧</h1>
+    <h1>アイテム一覧</h1>
     <?php include VIEW_PATH . 'templates/messages.php'; ?>
 
     <div class="card-deck" style="max-width: 700px;">

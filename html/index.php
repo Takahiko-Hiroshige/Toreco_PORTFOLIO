@@ -20,7 +20,14 @@ $db = get_db_connect();
 $user = get_login_user($db);
 //トークン生成
 $token = get_csrf_token();
-//全アイテム情報を取得
-$items = get_open_items($db);
+$search_name = get_post("search");
+
+if(get_post("search")){
+  //検索アイテム情報を取得
+  $items = get_search_items($db, $search_name);
+}else {
+  //全アイテム情報を取得
+  $items = get_items($db);
+}
 
 include_once VIEW_PATH . 'index_view.php';

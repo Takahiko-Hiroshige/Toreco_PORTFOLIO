@@ -27,6 +27,7 @@ $user = get_login_user($db);
 $item_id = $_POST["item_id"];
 $request_item_id = $_POST["item_id"];
 
+//アイテム一覧で削除を押した際の処理
 if(destroy_item($db, $item_id) === true){
   delete_trade_request($db, $item_id, $request_item_id);
   set_message('アイテムを削除しました。');

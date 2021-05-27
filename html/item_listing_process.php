@@ -29,10 +29,11 @@ $image = get_file('image');
 $item_quality = get_post('item_quality');
 $trade_item_name = get_post('trade_item_name');
 
+//アイテムを出品
 if(regist_item($db, $name, $image, $item_quality, $trade_item_name, $user["user_id"])){
-  set_message('商品を登録しました。');
+  set_message('アイテムを登録しました。');
 }else {
-  set_error('商品の登録に失敗しました。');
+  set_error('アイテムの登録に失敗しました。');
 }
 
 

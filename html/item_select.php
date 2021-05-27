@@ -22,7 +22,8 @@ $token = get_csrf_token();
 
 $item_id = $_GET["item_id"];
 $user_id = $_GET["user_id"];
-//全アイテム情報を取得
+
+//出品アイテムからトレードしたいアイテム情報を取得
 $trade_items = get_trade_items($db, $user["user_id"]);
 
 include_once VIEW_PATH . 'item_select_view.php';

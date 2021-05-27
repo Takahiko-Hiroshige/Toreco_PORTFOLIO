@@ -21,7 +21,11 @@ $user = get_login_user($db);
 //トークン生成
 $token = get_csrf_token();
 
-//出品アイテム情報を取得
-$listing_items = get_listing_items($db, $user["user_id"]);
+//ユーザーの出品アイテム情報を取得
+if(is_admin($user)){
+  $listing_items = get_all_listing_items($db);
+}else {
+  $listing_items = get_listing_items($db, $user["user_id"]);
+}
 
 include_once VIEW_PATH . 'item_listing_table_view.php';

@@ -30,7 +30,9 @@
                 <?php } ?>
             <p class="title">トレードしたいアイテム：</p>
             <p class="contents"><?php print h($item['trade_item']); ?></p>
-            <?php if($user["user_id"] === $item["user_id"]){ ?>
+            <?php if($trade_success_check > 0){?>
+                <button type="button" class="btn btn-lg btn-secondary btn-block" disabled>トレード済みアイテム</button>
+            <?php }else if($user["user_id"] === $item["user_id"]){ ?>
                 <button type="button" class="btn btn-lg btn-warning btn-block" disabled>トレードリクエスト送信</button>
             <?php }else if($detail === "detail"){ ?>
                 <form action="trade_request.php" method="get">
@@ -38,8 +40,6 @@
                     <input type="hidden" name="detail" value="detail">
                     <input type="hidden" name="csrf_token" value="<?=$token?>">
                 </form>
-            <?php }else if($trade_success_check > 0){?>
-                <button type="button" class="btn btn-lg btn-secondary btn-block" disabled>トレード済みアイテム</button>
             <?php } else{?>
                 <form action="item_select.php" method="get">
                     <input type="submit" value="トレードリクエスト送信" class="btn btn-warning btn-block">
