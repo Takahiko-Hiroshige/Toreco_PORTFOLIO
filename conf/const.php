@@ -13,7 +13,7 @@ if($_SERVER['SERVER_ADDR']==='118.27.9.103'){
 }else {
 	define('DB_HOST', 'mysql');
 }
-define('DB_NAME', 'sample');
+define('DB_NAME', 'toreco');
 define('DB_USER', 'testuser');
 define('DB_PASS', 'password');
 define('DB_CHARSET', 'utf8');
